@@ -51,9 +51,10 @@ class Board:
         for i in range(self.row):
             for j in range(self.col):
                 if self.open[i][j] != -1:
-                    num = font.render(f'{self.open[i][j]}', True, colors[self.open[i][j]])
                     pygame.draw.rect(screen, dark_gray, pygame.Rect(j * self.size, i * self.size, self.size ,self.size ))
-                    screen.blit(num, (j * self.size + 10, i * self.size))
+                    if self.open[i][j]:
+                        num = font.render(f'{self.open[i][j]}', True, colors[self.open[i][j]])
+                        screen.blit(num, (j * self.size + 10, i * self.size))
 
         pygame.display.flip()
 

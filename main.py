@@ -8,15 +8,15 @@ black = (0, 0, 0)
 white = (255, 255, 255)
 
 size = 20
-width = size * 10
-height = size * 10
+width = size * 40
+height = size * 30
 col = width // size
 row = height // size
 lose = False
 f_sys = pygame.font.SysFont('arial', 25, 2)
 
 dis = pygame.display.set_mode((width, height), pygame.RESIZABLE)
-board = Board(row , col, 15, size)
+board = Board(row , col, 120, size)
 dis.fill(gray)
 for i in range(col + 1):
     pygame.draw.line(dis, white, (i * size, 0), (i * size, row * size))
@@ -40,5 +40,5 @@ while True:
                 pygame.display.flip()
             else:
                 board.play(x, y)
-
-    board.draw(dis)
+    if not lose:
+        board.draw(dis)
